@@ -469,7 +469,7 @@ if executable('fcitx5-remote')
     endfunction
 
     function! RestoreInputMethod()
-        silent !fcitx5-remote -s chewing
+        silent !fcitx5-remote -r
     endfunction
 
     " 焦点获得时切换到英文输入法
