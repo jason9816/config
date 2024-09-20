@@ -457,3 +457,19 @@ set visualbell
 
 "保留撤销历史
 "set undofile
+
+if executable('fcitx5-remote')
+    function! SetEnglishInputMethod()
+        silent !fcitx5-remote -s keyboard-us
+    endfunction
+
+    function! RestoreInputMethod()
+        silent !fcitx5-remote -s chewing
+    endfunction
+
+    " 焦点获得时切换到英文输入法
+    autocmd FocusGained * call SetEnglishInputMethod()
+
+    " 焦点失去时恢复原始输入法
+    autocmd FocusLost * call RestoreInputMethod()
+endif
