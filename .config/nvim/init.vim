@@ -27,23 +27,8 @@ require('packer').startup(function(use)
         require('smoothcursor').setup()
     end
     }
-    use {
-        "ethanholz/nvim-lastplace",
-        event = { "User FileOpened" },
-        config = function()
-        require("nvim-lastplace").setup({
-                lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
-                lastplace_ignore_filetype = {
-                    "gitcommit",
-                    "gitrebase",
-                    "svn",
-                    "hgcommit",
-                    },
-        lastplace_open_folds = true,
-        })
-        end,
-    }
-end)
+    use 'ethanholz/nvim-lastplace'
+    end)
 END
 "----------------------------------------------------
 "                    indentLine
@@ -567,4 +552,12 @@ require('smoothcursor').setup({
     -- `nil` = disabled
     show_last_positions = nil,  
 })
+END
+
+lua << END
+require'nvim-lastplace'.setup {
+    lastplace_ignore_buftype = {"quickfix", "nofile", "help"},
+    lastplace_ignore_filetype = {"gitcommit", "gitrebase", "svn", "hgcommit"},
+    lastplace_open_folds = true
+}
 END
